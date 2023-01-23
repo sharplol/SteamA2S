@@ -21,10 +21,12 @@ public record A2SInfoPacket(
     bool Visiblity,
     bool VacEnabled,
     string Version,
-    IPEndPoint? GameIPEndPoint,
+    IPEndPoint GameIPEndPoint,
     ulong? SteamId,
     A2SSourceTVSpectator? Spectator,
     string? Keywords,
     ulong? AppIdFull,
-    IReadOnlyList<A2SPlayerPacket> PlayerData)
-{ }
+    IReadOnlyList<A2SPlayerPacket> PlayerData) : IBasicServerInfoPacket
+{
+    IReadOnlyList<IBasicPlayerInfoPacket> IBasicServerInfoPacket.PlayerData => PlayerData;
+}

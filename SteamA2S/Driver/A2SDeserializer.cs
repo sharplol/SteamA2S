@@ -36,7 +36,7 @@ internal class A2SDeserializer : TrivialTypeDeserializer
             !Bool(),
             Bool(),
             String(),
-            ((EDF = Byte()) & 0x80) != 0 ? new(_ipEndPoint.Address, UInt16()) : null,
+            ((EDF = Byte()) & 0x80) != 0 ? new(_ipEndPoint.Address, UInt16()) : _ipEndPoint,
             (EDF & 0x10) != 0 ? UInt64() : 0,
             (EDF & 0x40) != 0 ? new(UInt16(), String()) : null,
             (EDF & 0x20) != 0 ? String() : null,
